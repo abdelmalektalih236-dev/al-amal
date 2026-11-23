@@ -133,46 +133,68 @@
     <!--        app:fabSize="normal"-->
     <!--        />-->
     <!-- Étape 1 - options (CheckBox) : chaque case se coche à part -->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Options (2 DH chacune)"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    <CheckBox-->
+<!--        android:id="@+id/chkImpression"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Impression"-->
+<!--        android:textSize="22sp" />-->
+
+<!--    <CheckBox-->
+<!--        android:id="@+id/chkCasque"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Casque audio"-->
+<!--        android:textSize="22sp" />-->
+
+<!--    <CheckBox-->
+<!--        android:id="@+id/chkScanner"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Scanner"-->
+<!--        android:textSize="22sp" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btnTotal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="calculer" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/txtTotal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="22sp" />-->
+<!--    />-->
+    <!-- Étape 2 - forfait (RadioButton dans un RadioGroup) : un seul choix -->
+
+    <!-- Étape 3 — ToggleButton et Switch : marche ou arrêt -->
+    <ToggleButton
+        android:id="@+id/tglClim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Clim : OFF"
+        android:textOn="Clim : ON"
+        android:textSize="20sp" />
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/swSilence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode silencieux"
+        android:textSize="22sp" />
     <TextView
+        android:id="@+id/txtEtat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Options (2 DH chacune)"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <CheckBox
-        android:id="@+id/chkImpression"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Impression"
+        android:text="Clim éteinte, son activé"
         android:textSize="22sp" />
-
-    <CheckBox
-        android:id="@+id/chkCasque"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Casque audio"
-        android:textSize="22sp" />
-
-    <CheckBox
-        android:id="@+id/chkScanner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Scanner"
-        android:textSize="22sp" />
-
-    <Button
-        android:id="@+id/btnTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="calculer" />
-
-    <TextView
-        android:id="@+id/txtTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22sp" />
-    />
 
 
 </LinearLayout>

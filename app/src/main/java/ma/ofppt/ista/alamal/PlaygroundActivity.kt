@@ -1,13 +1,10 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.requestProfiling
+import com.google.android.material.materialswitch.MaterialSwitch
 
 // MODE COURS (Playground) : écran VIDE pour tester en direct les exemples montrés en cours.
 // Écrivez le layout dans res/layout/activity_playground.xml et le code Kotlin ci-dessous, dans onCreate.
@@ -73,29 +70,48 @@ class PlaygroundActivity : AppCompatActivity() {
 //            edtPrenom.text=null
 //            edtPrenom.error=null
 //        }
-        val imp = findViewById<CheckBox>(R.id.chkImpression)
-        val cas = findViewById<CheckBox>(R.id.chkCasque)
-        val scan = findViewById<CheckBox>(R.id.chkScanner)
-        val btn = findViewById<Button>(R.id.btnTotal)
-        val txtTotale = findViewById<TextView>(R.id.txtTotal)
+//        val imp = findViewById<CheckBox>(R.id.chkImpression)
+//        val cas = findViewById<CheckBox>(R.id.chkCasque)
+//        val scan = findViewById<CheckBox>(R.id.chkScanner)
+//        val btn = findViewById<Button>(R.id.btnTotal)
+//        val txtTotale = findViewById<TextView>(R.id.txtTotal)
+//
+//        btn.setOnClickListener {
+//            var prix = 0
+//            var option = 0
+//        if (imp.isChecked) {
+//            prix+=2
+//            option++
+//        }
+//        if (cas.isChecked) {
+//            prix +=2
+//            option++
+//        }
+//        if (scan.isChecked) {
+//            prix +=2
+//            option++
+//        }
+//            txtTotale.text = "$option option(s) : $prix DH"
+//        }
+        val tglClim = findViewById<ToggleButton>(R.id.tglClim)
+        val swSilence = findViewById<MaterialSwitch>(R.id.swSilence)
+        val txtEtat = findViewById<TextView>(R.id.txtEtat)
 
-        btn.setOnClickListener {
-            var prix = 0
-            var option = 0
-        if (imp.isChecked) {
-            prix+=2
-            option++
+        tglClim.setOnCheckedChangeListener { _, estActif ->
+            if (estActif) {
+                txtEtat.text = "Climatisation On"
+            } else {
+                txtEtat.text = "Climatisation Off"
+            }
         }
-        if (cas.isChecked) {
-            prix +=2
-            option++
+
+        swSilence.setOnCheckedChangeListener { _, estActif ->
+            if (estActif) {
+                txtEtat.text = "Mode silencieux : On"
+            } else {
+                txtEtat.text = "Mode silencieux Off"
+            }
         }
-        if (scan.isChecked) {
-            prix +=2
-            option++
-        }
-            txtTotale.text = "$option option(s) : $prix DH"
-        }
-    }
 
     }
+}
