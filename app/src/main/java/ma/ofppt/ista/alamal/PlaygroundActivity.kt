@@ -3,6 +3,7 @@ package ma.ofppt.ista.alamal
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -51,26 +52,50 @@ class PlaygroundActivity : AppCompatActivity() {
 //            numclient++
 //            txtClients.text=" clients present :$numclient"
 //    }
-        val btnEntrer = findViewById<Button>(R.id.btnEntrer)
-        val txtSalut = findViewById<TextView>(R.id.txtSalut)
-        val edtPrenom = findViewById<TextView>(R.id.edtPrenom)
-        btnEntrer.setOnClickListener {
-            if (edtPrenom.text.toString().isNotEmpty())  {
-                txtSalut.text="Bienvenue ${edtPrenom.text}"
+//        val btnEntrer = findViewById<Button>(R.id.btnEntrer)
+//        val txtSalut = findViewById<TextView>(R.id.txtSalut)
+//        val edtPrenom = findViewById<TextView>(R.id.edtPrenom)
+//        btnEntrer.setOnClickListener {
+//            if (edtPrenom.text.toString().isNotEmpty())  {
+//                txtSalut.text="Bienvenue ${edtPrenom.text}"
+//
+//
+//            }else{
+//                edtPrenom.error="Entrer votre prenom"
+//            }
+//
+//
+//        }
+//        val fabNouveau = findViewById<View>(R.id.fabNouveau)
+//        fabNouveau.setOnClickListener {
+//
+//            txtSalut.text=""
+//            edtPrenom.text=null
+//            edtPrenom.error=null
+//        }
+        val imp = findViewById<CheckBox>(R.id.chkImpression)
+        val cas = findViewById<CheckBox>(R.id.chkCasque)
+        val scan = findViewById<CheckBox>(R.id.chkScanner)
+        val btn = findViewById<Button>(R.id.btnTotal)
+        val txtTotale = findViewById<TextView>(R.id.txtTotal)
 
-
-            }else{
-                edtPrenom.error="Entrer votre prenom"
-            }
-
-
+        btn.setOnClickListener {
+            var prix = 0
+            var option = 0
+        if (imp.isChecked) {
+            prix+=2
+            option++
         }
-        val fabNouveau = findViewById<View>(R.id.fabNouveau)
-        fabNouveau.setOnClickListener {
-
-            txtSalut.text=""
-            edtPrenom.text=null
-            edtPrenom.error=null
+        if (cas.isChecked) {
+            prix +=2
+            option++
+        }
+        if (scan.isChecked) {
+            prix +=2
+            option++
+        }
+            txtTotale.text = "$option option(s) : $prix DH"
         }
     }
-}
+
+    }
