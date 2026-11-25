@@ -1,11 +1,9 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
-import android.view.Menu
+import android.view.ContextMenu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -124,24 +122,24 @@ class PlaygroundActivity : AppCompatActivity() {
 //                txtEtat.text = "Mode silencieux Off"
 //            }
 //        }
-        val sp01 = findViewById<Spinner>(R.id.spPosteCode)
-        val txtPos = findViewById<TextView>(R.id.txtPoste)
-
-        sp01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val tempText = parent?.getItemAtPosition(position).toString()
-                txtPos.text = "vous avez choisi :$tempText"
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
-        }
+//        val sp01 = findViewById<Spinner>(R.id.spPosteCode)
+//        val txtPos = findViewById<TextView>(R.id.txtPoste)
+//
+//        sp01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                val tempText = parent?.getItemAtPosition(position).toString()
+//                txtPos.text = "vous avez choisi :$tempText"
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                TODO("Not yet implemented")
+//            }
+//        }
 //        //00 acceder au element par id
 //        val sp02 = findViewById<Spinner>(R.id.spPosteCode)
 //        val txtPost2 = findViewById<TextView>(R.id.txtPosteCode)
@@ -178,20 +176,47 @@ class PlaygroundActivity : AppCompatActivity() {
 //        btnVider.setOnClickListener {
 //            adapteur1.clear()
 //        }
+        val textDeContext = findViewById<TextView>(R.id.txtPoste3)
+        registerForContextMenu(textDeContext)
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.s02_menu_principal, menu)
-        return true
+    //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.s02_menu_principal, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val t = findViewById<TextView>(R.id.txtMenu)
+//        when (item.itemId) {
+//            R.id.menu_tarifs -> t.text = "Vvoilaa les tarifs !!!"
+//            R.id.menu_aide -> t.text = "appelez 098764565 aide"
+//            R.id.menu_apropos -> t.text = "nous somme cybercafe"
+//
+//        }
+//        return true
+//    }
+//    override fun onCreateContextMenu(
+//        menu: Menu,
+//        v: View,
+//        menuInfo: ContextMenu.ContextMenuInfo?
+//    ) {
+//
+//        menuInflater.inflate(R.menu.s02_menu_poste, menu)
+//    }
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        menuInflater.inflate(R.menu.s02_menu_poste, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val t = findViewById<TextView>(R.id.txtMenu)
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val textaff = findViewById<TextView>(R.id.txtContext)
         when (item.itemId) {
-            R.id.menu_tarifs -> t.text = "Vvoilaa les tarifs !!!"
-            R.id.menu_aide -> t.text = "appelez 098764565 aide"
-            R.id.menu_apropos -> t.text = "nous somme cybercafe"
+            R.id.poste_prolonger -> textaff.text = "prolonger"
+            R.id.poste_liberer -> textaff.text = "libere"
 
         }
         return true
