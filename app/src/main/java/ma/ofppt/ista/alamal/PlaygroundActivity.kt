@@ -1,17 +1,29 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.materialswitch.MaterialSwitch
 
+// MODE COURS (Playground) : écran VIDE pour tester en direct les exemples montrés en cours.
+// Écrivez le layout dans res/layout/activity_playground.xml et le code Kotlin ci-dessous, dans onCreate.
 // MODE COURS (Playground) : écran VIDE pour tester en direct les exemples montrés en cours.
 // Écrivez le layout dans res/layout/activity_playground.xml et le code Kotlin ci-dessous, dans onCreate.
 class PlaygroundActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_playground)
+
+//        val img= findViewById<ImageView>(R.id.imgLogo)
+//        val txt= findViewById<TextView>(R.id.txtInfo)
+//
+//        img.setOnClickListener {
+//            txt.text ="8 postes,Imprimante et scanner"
+//        }
 
 //        val img= findViewById<ImageView>(R.id.imgLogo)
 //        val txt= findViewById<TextView>(R.id.txtInfo)
@@ -93,25 +105,78 @@ class PlaygroundActivity : AppCompatActivity() {
 //        }
 //            txtTotale.text = "$option option(s) : $prix DH"
 //        }
-        val tglClim = findViewById<ToggleButton>(R.id.tglClim)
-        val swSilence = findViewById<MaterialSwitch>(R.id.swSilence)
-        val txtEtat = findViewById<TextView>(R.id.txtEtat)
+//        val tglClim = findViewById<ToggleButton>(R.id.tglClim)
+//        val swSilence = findViewById<MaterialSwitch>(R.id.swSilence)
+//        val txtEtat = findViewById<TextView>(R.id.txtEtat)
+//
+//        tglClim.setOnCheckedChangeListener { _, estActif ->
+//            if (estActif) {
+//                txtEtat.text = "Climatisation On"
+//            } else {
+//                txtEtat.text = "Climatisation Off"
+//            }
+//        }
+//
+//        swSilence.setOnCheckedChangeListener { _, estActif ->
+//            if (estActif) {
+//                txtEtat.text = "Mode silencieux : On"
+//            } else {
+//                txtEtat.text = "Mode silencieux Off"
+//            }
+//        }
+        val sp01 = findViewById<Spinner>(R.id.spPosteCode)
+        val txtPos = findViewById<TextView>(R.id.txtPoste)
 
-        tglClim.setOnCheckedChangeListener { _, estActif ->
-            if (estActif) {
-                txtEtat.text = "Climatisation On"
-            } else {
-                txtEtat.text = "Climatisation Off"
+        sp01.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val tempText = parent?.getItemAtPosition(position).toString()
+                txtPos.text = "vous avez choisi :$tempText"
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
             }
         }
+        //00 acceder au element par id
+        val sp02 = findViewById<Spinner>(R.id.spPosteCode)
+        val txtPost2 = findViewById<TextView>(R.id.txtPosteCode)
+        //01 liste des choix
+        val postes = mutableListOf("Poste1", "Poste2", "Poste3")
+        val lstPosteFromRessources = resources.getStringArray(R.array.s02_postes).toList()
+        //02 declarer un adapteur ey adapter la liste
+        val adapteur1 = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, postes)
+        val adapteur2 = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            lstPosteFromRessources
+        )
+        //03 utiliser l'adapteur dans le spinner
+        sp02.adapter = adapteur1
+        //04 on click listener dans la button vider la liste
 
-        swSilence.setOnCheckedChangeListener { _, estActif ->
-            if (estActif) {
-                txtEtat.text = "Mode silencieux : On"
-            } else {
-                txtEtat.text = "Mode silencieux Off"
+        //05 on click listener dans le spinner
+        sp02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                txtPost2.text = parent?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                txtPost2.text = "aucun poste selectionne"
             }
         }
-
+        val btnVider = findViewById<Button>(R.id.btnVider)
+        btnVider.setOnClickListener {
+            adapteur1.clear()
+        }
     }
 }

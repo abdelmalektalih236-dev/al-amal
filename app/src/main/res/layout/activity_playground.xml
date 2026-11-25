@@ -176,25 +176,63 @@
     <!-- Étape 2 - forfait (RadioButton dans un RadioGroup) : un seul choix -->
 
     <!-- Étape 3 — ToggleButton et Switch : marche ou arrêt -->
-    <ToggleButton
-        android:id="@+id/tglClim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textOff="Clim : OFF"
-        android:textOn="Clim : ON"
-        android:textSize="20sp" />
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/swSilence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mode silencieux"
-        android:textSize="22sp" />
+<!--    <ToggleButton-->
+<!--        android:id="@+id/tglClim"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textOff="Clim : OFF"-->
+<!--        android:textOn="Clim : ON"-->
+<!--        android:textSize="20sp" />-->
+<!--    <com.google.android.material.materialswitch.MaterialSwitch-->
+<!--        android:id="@+id/swSilence"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Mode silencieux"-->
+<!--        android:textSize="22sp" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/txtEtat"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Clim éteinte, son activé"-->
+<!--        android:textSize="22sp" />-->
     <TextView
-        android:id="@+id/txtEtat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clim éteinte, son activé"
-        android:textSize="22sp" />
+        android:text="poste souhaite"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+    <Spinner
+        android:id="@+id/spPoste"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"
+        android:entries="@array/s02_postes"/>
+    <TextView
+        android:id="@+id/txtPoste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="poste (liste remplie par le code)"
+        android:textStyle="bold"/>
+    <Spinner
+        android:id="@+id/spPosteCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="56dp"/>
+    <Button
+        android:id="@+id/btnVider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vider la liste"/>
 
+    <TextView
+        android:id="@+id/txtPosteCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"/>
 
 </LinearLayout>
