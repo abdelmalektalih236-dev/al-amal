@@ -195,44 +195,50 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:text="Clim éteinte, son activé"-->
 <!--        android:textSize="22sp" />-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="poste souhaite"
-        android:textSize="24sp"
-        android:textStyle="bold"/>
-    <Spinner
-        android:id="@+id/spPoste"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"
-        android:entries="@array/s02_postes"/>
-    <TextView
-        android:id="@+id/txtPoste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22sp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="poste (liste remplie par le code)"
-        android:textStyle="bold"/>
-    <Spinner
-        android:id="@+id/spPosteCode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="56dp"/>
-    <Button
-        android:id="@+id/btnVider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vider la liste"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="poste souhaite"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"/>-->
+<!--    <Spinner-->
+<!--        android:id="@+id/spPoste"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="56dp"-->
+<!--        android:entries="@array/s02_postes"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/txtPoste"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="22sp"/>-->
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="24sp"-->
+<!--        android:text="poste (liste remplie par le code)"-->
+<!--        android:textStyle="bold"/>-->
+<!--    <Spinner-->
+<!--        android:id="@+id/spPosteCode"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minHeight="56dp"/>-->
+<!--    <Button-->
+<!--        android:id="@+id/btnVider"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="vider la liste"/>-->
 
+<!--    <TextView-->
+<!--        android:id="@+id/txtPosteCode"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="22sp"/>-->
     <TextView
-        android:id="@+id/txtPosteCode"
+        android:id="@+id/txtMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="toucher les 3 points ou l'incone en haut a droite"
         android:textSize="22sp"/>
 
 </LinearLayout>

@@ -1,10 +1,10 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -142,41 +142,58 @@ class PlaygroundActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         }
-        //00 acceder au element par id
-        val sp02 = findViewById<Spinner>(R.id.spPosteCode)
-        val txtPost2 = findViewById<TextView>(R.id.txtPosteCode)
-        //01 liste des choix
-        val postes = mutableListOf("Poste1", "Poste2", "Poste3")
-        val lstPosteFromRessources = resources.getStringArray(R.array.s02_postes).toList()
-        //02 declarer un adapteur ey adapter la liste
-        val adapteur1 = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, postes)
-        val adapteur2 = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_dropdown_item,
-            lstPosteFromRessources
-        )
-        //03 utiliser l'adapteur dans le spinner
-        sp02.adapter = adapteur1
-        //04 on click listener dans la button vider la liste
+//        //00 acceder au element par id
+//        val sp02 = findViewById<Spinner>(R.id.spPosteCode)
+//        val txtPost2 = findViewById<TextView>(R.id.txtPosteCode)
+//        //01 liste des choix
+//        val postes = mutableListOf("Poste1", "Poste2", "Poste3")
+//        val lstPosteFromRessources = resources.getStringArray(R.array.s02_postes).toList()
+//        //02 declarer un adapteur ey adapter la liste
+//        val adapteur1 = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, postes)
+//        val adapteur2 = ArrayAdapter(
+//            this,
+//            android.R.layout.simple_spinner_dropdown_item,
+//            lstPosteFromRessources
+//        )
+//        //03 utiliser l'adapteur dans le spinner
+//        sp02.adapter = adapteur1
+//        //04 on click listener dans la button vider la liste
+//
+//        //05 on click listener dans le spinner
+//        sp02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                txtPost2.text = parent?.getItemAtPosition(position).toString()
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                txtPost2.text = "aucun poste selectionne"
+//            }
+//        }
+//        val btnVider = findViewById<Button>(R.id.btnVider)
+//        btnVider.setOnClickListener {
+//            adapteur1.clear()
+//        }
 
-        //05 on click listener dans le spinner
-        sp02.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                txtPost2.text = parent?.getItemAtPosition(position).toString()
-            }
+    }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                txtPost2.text = "aucun poste selectionne"
-            }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.s02_menu_principal, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val t = findViewById<TextView>(R.id.txtMenu)
+        when (item.itemId) {
+            R.id.menu_tarifs -> t.text = "Vvoilaa les tarifs !!!"
+            R.id.menu_aide -> t.text = "appelez 098764565 aide"
+            R.id.menu_apropos -> t.text = "nous somme cybercafe"
+
         }
-        val btnVider = findViewById<Button>(R.id.btnVider)
-        btnVider.setOnClickListener {
-            adapteur1.clear()
-        }
+        return true
     }
 }
