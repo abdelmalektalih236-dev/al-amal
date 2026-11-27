@@ -1,11 +1,10 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.ActionMode
 
 // MODE COURS (Playground) : écran VIDE pour tester en direct les exemples montrés en cours.
 // Écrivez le layout dans res/layout/activity_playground.xml et le code Kotlin ci-dessous, dans onCreate.
@@ -179,11 +178,43 @@ class PlaygroundActivity : AppCompatActivity() {
 //        val textDeContext = findViewById<TextView>(R.id.txtPoste3)
 //        registerForContextMenu(textDeContext)
 //
-        val txtRes = findViewById<TextView>(R.id.txtResa)
-        val txtAction = findViewById<TextView>(R.id.txtAction)
-        txtRes.setOnClickListener {
-            startSupportActionMode(ClassDeCallBack(txtRes, txtAction))
+//        val txtRes = findViewById<TextView>(R.id.txtResa)
+//        val txtAction = findViewById<TextView>(R.id.txtAction)
+//        txtRes.setOnClickListener {
+//            startSupportActionMode(ClassDeCallBack(txtRes, txtAction))
+//            true
+//        }
+        // 1. Récupérer un bouton ou un TextView qui va déclencher le popup
+        val monBouton = findViewById<ImageButton>(R.id.btnPlus) // ou TextView
+        val txtResultat = findViewById<TextView>(R.id.txtPopup)
+
+        monBouton.setOnClickListener {
+            // 2. Créer le PopupMenu rattaché à la vue cliquée
+            val popup = PopupMenu(this, monBouton)
             true
+
+            // 3. Gonfler le menu XML (ex: menu_popup.xml)
+            popup.menuInflater.inflate(R.menu.menu_popup, popup.menu)
+
+            // 4. Gérer le clic sur les options du popup
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.popup_message -> {
+                        txtResultat.text = "Action : Envoyer un message"
+                        true
+                    }
+
+                    R.id.popup_ticket -> {
+                        txtResultat.text = "Action : Imprimer le ticket"
+                        true
+                    }
+
+                    else -> false
+                }
+            }
+
+            // 5. Afficher le popup
+            popup.show()
         }
     }
 
@@ -227,27 +258,27 @@ class PlaygroundActivity : AppCompatActivity() {
 //        }
 //        return true
 //    }
-}
 
-class ClassDeCallBack(val txtRes: TextView, val txtAction: TextView) : ActionMode.Callback {
-    override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
-        txtAction.text = "selectionner:${item?.title}"
-        mode?.finish()
-        return true
-    }
 
-    override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        mode?.menuInflater?.inflate(R.menu.s02_menu_principal, menu)
-        return true
-    }
-
-    override fun onDestroyActionMode(mode: ActionMode?) {
-        return
-    }
-
-    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
-        return false
-    }
+//class ClassDeCallBack(val txtRes: TextView, val txtAction: TextView) : ActionMode.Callback {
+//    override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+//        txtAction.text = "selectionner:${item?.title}"
+//        mode?.finish()
+//        return true
+//    }
+//
+//    override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+//        mode?.menuInflater?.inflate(R.menu.s02_menu_principal, menu)
+//        return true
+//    }
+//
+//    override fun onDestroyActionMode(mode: ActionMode?) {
+//        return
+//    }
+//
+//    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+//        return false
+//    }
 
 
 }
