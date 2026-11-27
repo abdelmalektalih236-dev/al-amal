@@ -240,23 +240,44 @@
     <!--        android:layout_height="wrap_content"-->
     <!--        android:text="toucher les 3 points ou l'incone en haut a droite"-->
     <!--        android:textSize="22sp"/>-->
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="appui long sur un poste : "-->
+    <!--        android:textSize="20sp"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/txtPoste3"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="16dp"-->
+    <!--        android:background="#E8F5E9"-->
+    <!--        android:text="poste 3 . yassine . 25 min restantes"-->
+    <!--        android:textSize="22sp"/>-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/txtContext"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textSize="22sp"/>-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="appui long sur un poste : "
-        android:textSize="20sp"/>
+        android:text="Appui long sur la reservation :"
+        android:textSize="20sp" />
+
     <TextView
-        android:id="@+id/txtPoste3"
-        android:layout_width="match_parent"
+        android:id="@+id/txtResa"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:background="#E8F5E9"
-        android:text="poste 3 . yassine . 25 min restantes"
-        android:textSize="22sp"/>
+        android:padding="16dp"
+        android:text="Reservation .Hayat. poste 5 . 15 h"
+        android:textSize="22sp" />
+
     <TextView
-        android:id="@+id/txtContext"
+        android:id="@+id/txtAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="22sp"/>
+        android:textSize="22sp" />
 
 </LinearLayout>

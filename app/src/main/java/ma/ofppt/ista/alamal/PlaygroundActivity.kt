@@ -1,11 +1,11 @@
 package ma.ofppt.ista.alamal
 
 import android.os.Bundle
-import android.view.ContextMenu
+import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ActionMode
 
 // MODE COURS (Playground) : écran VIDE pour tester en direct les exemples montrés en cours.
 // Écrivez le layout dans res/layout/activity_playground.xml et le code Kotlin ci-dessous, dans onCreate.
@@ -176,9 +176,15 @@ class PlaygroundActivity : AppCompatActivity() {
 //        btnVider.setOnClickListener {
 //            adapteur1.clear()
 //        }
-        val textDeContext = findViewById<TextView>(R.id.txtPoste3)
-        registerForContextMenu(textDeContext)
-
+//        val textDeContext = findViewById<TextView>(R.id.txtPoste3)
+//        registerForContextMenu(textDeContext)
+//
+        val txtRes = findViewById<TextView>(R.id.txtResa)
+        val txtAction = findViewById<TextView>(R.id.txtAction)
+        txtRes.setOnClickListener {
+            startSupportActionMode(ClassDeCallBack(txtRes, txtAction))
+            true
+        }
     }
 
     //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -204,21 +210,44 @@ class PlaygroundActivity : AppCompatActivity() {
 //
 //        menuInflater.inflate(R.menu.s02_menu_poste, menu)
 //    }
-    override fun onCreateContextMenu(
-        menu: ContextMenu?,
-        v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
-        menuInflater.inflate(R.menu.s02_menu_poste, menu)
-    }
+//    override fun onCreateContextMenu(
+//        menu: ContextMenu?,
+//        v: View?,
+//        menuInfo: ContextMenu.ContextMenuInfo?
+//    ) {
+//        menuInflater.inflate(R.menu.s02_menu_poste, menu)
+//    }
+//
+//    override fun onContextItemSelected(item: MenuItem): Boolean {
+//        val textaff = findViewById<TextView>(R.id.txtContext)
+//        when (item.itemId) {
+//            R.id.poste_prolonger -> textaff.text = "prolonger"
+//            R.id.poste_liberer -> textaff.text = "libere"
+//
+//        }
+//        return true
+//    }
+}
 
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        val textaff = findViewById<TextView>(R.id.txtContext)
-        when (item.itemId) {
-            R.id.poste_prolonger -> textaff.text = "prolonger"
-            R.id.poste_liberer -> textaff.text = "libere"
-
-        }
+class ClassDeCallBack(val txtRes: TextView, val txtAction: TextView) : ActionMode.Callback {
+    override fun onActionItemClicked(mode: ActionMode?, item: MenuItem?): Boolean {
+        txtAction.text = "selectionner:${item?.title}"
+        mode?.finish()
         return true
     }
+
+    override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+        mode?.menuInflater?.inflate(R.menu.s02_menu_principal, menu)
+        return true
+    }
+
+    override fun onDestroyActionMode(mode: ActionMode?) {
+        return
+    }
+
+    override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+        return false
+    }
+
+
 }
